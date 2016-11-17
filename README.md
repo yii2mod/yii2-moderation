@@ -3,6 +3,11 @@ Yii2 Moderation
 
 A simple Content Moderation System for Yii2 that allows you to Approve or Reject resources like posts, comments, etc.
 
+
+[![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-moderation/v/stable)](https://packagist.org/packages/yii2mod/yii2-moderation)
+[![Total Downloads](https://poser.pugx.org/yii2mod/yii2-moderation/downloads)](https://packagist.org/packages/yii2mod/yii2-moderation)
+[![License](https://poser.pugx.org/yii2mod/yii2-moderation/license)](https://packagist.org/packages/yii2mod/yii2-moderation)
+
 Installation
 ------------
 
