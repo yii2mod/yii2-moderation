@@ -188,7 +188,7 @@ class Post extends ActiveRecord
 `ModerationQueryTrait` adds the ability of getting only approved, rejected, postponed or pending models. Usage example:
 
 ```php
-yii2mod\moderation\ModerationQueryTrait;
+use yii2mod\moderation\ModerationQueryTrait;
 
 class Post extends ActiveRecord 
 {
@@ -206,4 +206,33 @@ Post::rejected()->all(); // It will return all Rejected Posts
 Post::postponed()->all(); // It will return all Postponed Posts
 
 Post::pending()->all(); // It will return all Pending Posts
+```
+
+> Also you may apply a condition, which filters only "approved" records, to the ActiveQuery as default scope:
+
+```php
+use yii2mod\moderation\ModerationQueryTrait;
+use yii2mod\moderation\ModerationBehavior;
+
+class Post extends ActiveRecord
+{
+    use ModerationQueryTrait;
+    
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            ModerationBehavior::class,
+        ];
+    }
+
+    public static function find()
+    {
+        return parent::find()->where(['status' => \yii2mod\moderation\enums\Status::APPROVED]);
+    }
+}
+
+$posts = Post::find()->all(); // returns only "approved" records
 ```
