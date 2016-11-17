@@ -82,7 +82,8 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'title' => 'string',
             'description' => 'string',
             'status' => 'integer',
-            'moderated_by' => 'integer'
+            'moderated_by' => 'integer',
+            'moderated_at' => 'integer'
         ])->execute();
 
         $db->createCommand()->createTable('user', [
@@ -94,8 +95,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
         // Data :
 
         $db->createCommand()->insert('post', [
-            'title' => 'Post Title',
-            'description' => 'some description'
+            'title' => 'Post Title'
         ])->execute();
 
         $db->createCommand()->insert('user', [
