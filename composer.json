@@ -1,0 +1,27 @@
+{
+    "name": "yii2mod/yii2-moderation",
+    "description": "A simple Content Moderation System for Yii2 that allows you to Approve or Reject resources like posts, comments, etc.",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "moderation",
+        "moderation-system",
+        "content-moderation"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor Chepurnoy",
+            "email": "igorzfort@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": ">=2.0.8",
+        "yii2mod/yii2-enum": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "yii2mod\\moderation\\": ""
+        }
+    }
+}
