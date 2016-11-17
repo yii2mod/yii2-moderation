@@ -7,7 +7,7 @@ A simple Content Moderation System for Yii2 that allows you to Approve or Reject
 [![Latest Stable Version](https://poser.pugx.org/yii2mod/yii2-moderation/v/stable)](https://packagist.org/packages/yii2mod/yii2-moderation)
 [![Total Downloads](https://poser.pugx.org/yii2mod/yii2-moderation/downloads)](https://packagist.org/packages/yii2mod/yii2-moderation)
 [![License](https://poser.pugx.org/yii2mod/yii2-moderation/license)](https://packagist.org/packages/yii2mod/yii2-moderation)
-
+[![Build Status](https://travis-ci.org/yii2mod/yii2-moderation.svg?branch=1.0)](https://travis-ci.org/yii2mod/yii2-moderation)
 Installation
 ------------
 
