@@ -9,6 +9,7 @@ use yii2mod\moderation\tests\data\User;
 
 /**
  * Class ModerationBehaviorTest
+ *
  * @package yii2mod\moderation\tests
  */
 class ModerationBehaviorTest extends TestCase

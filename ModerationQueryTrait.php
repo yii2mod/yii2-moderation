@@ -2,8 +2,8 @@
 
 namespace yii2mod\moderation;
 
-use yii2mod\moderation\enums\Status;
 use yii\db\ActiveQuery;
+use yii2mod\moderation\enums\Status;
 
 /**
  * ModerationQueryTrait adds the ability of getting only approved, rejected, postponed or pending models.
@@ -23,6 +23,7 @@ use yii\db\ActiveQuery;
  * ```
  *
  * @author Igor Chepurnoy <igorzfort@gmail.com>
+ *
  * @since 1.0
  */
 trait ModerationQueryTrait
@@ -34,7 +35,7 @@ trait ModerationQueryTrait
      */
     public static function approved()
     {
-        $model = new static;
+        $model = new static();
 
         return static::find()->where([$model->statusAttribute => Status::APPROVED]);
     }
@@ -46,7 +47,7 @@ trait ModerationQueryTrait
      */
     public static function rejected()
     {
-        $model = new static;
+        $model = new static();
 
         return static::find()->where([$model->statusAttribute => Status::REJECTED]);
     }
@@ -58,7 +59,7 @@ trait ModerationQueryTrait
      */
     public static function postponed()
     {
-        $model = new static;
+        $model = new static();
 
         return static::find()->where([$model->statusAttribute => Status::POSTPONED]);
     }
@@ -70,7 +71,7 @@ trait ModerationQueryTrait
      */
     public static function pending()
     {
-        $model = new static;
+        $model = new static();
 
         return static::find()->where([$model->statusAttribute => Status::PENDING]);
     }

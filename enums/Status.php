@@ -6,6 +6,7 @@ use yii2mod\enum\helpers\BaseEnum;
 
 /**
  * Class Status
+ *
  * @package yii2mod\moderation\enums
  */
 class Status extends BaseEnum

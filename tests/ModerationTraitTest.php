@@ -7,6 +7,7 @@ use yii2mod\moderation\tests\data\Post;
 
 /**
  * Class ModerationTraitTest
+ *
  * @package yii2mod\moderation\tests
  */
 class ModerationTraitTest extends TestCase

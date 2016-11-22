@@ -8,7 +8,7 @@ use yii\web\IdentityInterface;
 /**
  * Class User
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
  * @property string $email
  */

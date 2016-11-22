@@ -2,8 +2,8 @@
 
 namespace yii2mod\moderation\tests;
 
-use yii\helpers\ArrayHelper;
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the base class for all yii framework unit tests.
@@ -27,6 +27,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
     /**
      * Populates Yii::$app with a new application
      * The application will be destroyed on tearDown() automatically.
+     *
      * @param array $config The application configuration, if needed
      * @param string $appClass name of the application class to create
      */
@@ -43,12 +44,12 @@ class TestCase extends \PHPUnit_Framework_TestCase
                 ],
                 'request' => [
                     'hostInfo' => 'http://domain.com',
-                    'scriptUrl' => 'index.php'
+                    'scriptUrl' => 'index.php',
                 ],
                 'user' => [
                     'identityClass' => 'yii2mod\moderation\tests\data\User',
                 ],
-            ]
+            ],
         ], $config));
     }
 
@@ -83,24 +84,24 @@ class TestCase extends \PHPUnit_Framework_TestCase
             'description' => 'string',
             'status' => 'integer',
             'moderated_by' => 'integer',
-            'moderated_at' => 'integer'
+            'moderated_at' => 'integer',
         ])->execute();
 
         $db->createCommand()->createTable('user', [
             'id' => 'pk',
             'username' => 'string',
-            'email' => 'string'
+            'email' => 'string',
         ])->execute();
 
         // Data :
 
         $db->createCommand()->insert('post', [
-            'title' => 'Post Title'
+            'title' => 'Post Title',
         ])->execute();
 
         $db->createCommand()->insert('user', [
             'username' => 'John Doe',
-            'email' => 'johndoe@domain.com'
+            'email' => 'johndoe@domain.com',
         ])->execute();
     }
 }

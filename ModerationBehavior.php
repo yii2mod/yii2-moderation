@@ -2,12 +2,12 @@
 
 namespace yii2mod\moderation;
 
-use yii2mod\moderation\enums\Status;
 use Yii;
 use yii\base\Behavior;
 use yii\base\ModelEvent;
 use yii\db\ActiveRecord;
 use yii\db\BaseActiveRecord;
+use yii2mod\moderation\enums\Status;
 
 /**
  * Class ModerationBehavior allows you to Approve or Reject resources like posts, comments, users, etc.
@@ -70,6 +70,7 @@ use yii\db\BaseActiveRecord;
  * ```
  *
  * @author Igor Chepurnoy <igorzfort@gmail.com>
+ *
  * @since 1.0
  */
 class ModerationBehavior extends Behavior
@@ -91,7 +92,7 @@ class ModerationBehavior extends Behavior
 
     /**
      * @var string the attribute that will receive current user ID value
-     * Set this property to false if you do not want to record the creator ID.
+     * Set this property to false if you do not want to record the creator ID
      */
     public $moderatedByAttribute = 'moderated_by';
 
@@ -125,7 +126,7 @@ class ModerationBehavior extends Behavior
     /**
      * This method is invoked before moderating a record.
      *
-     * @return boolean
+     * @return bool
      */
     public function beforeModeration()
     {
@@ -259,8 +260,6 @@ class ModerationBehavior extends Behavior
 
     /**
      * Get value for `moderatedByAttribute`
-     *
-     * @return null
      */
     protected function getModeratedByAttributeValue()
     {

@@ -3,6 +3,7 @@
 namespace yii2mod\moderation\tests\data;
 
 use yii\db\ActiveRecord;
+use yii2mod\moderation\enums\Status;
 use yii2mod\moderation\ModerationBehavior;
 use yii2mod\moderation\ModerationQueryTrait;
 
@@ -10,9 +11,9 @@ use yii2mod\moderation\ModerationQueryTrait;
  * Class Post
  *
  * @property string $title
- * @property integer $status
- * @property integer $moderated_by
- * @property integer $moderated_at
+ * @property int $status
+ * @property int $moderated_by
+ * @property int $moderated_at
  */
 class Post extends ActiveRecord
 {
@@ -33,7 +34,7 @@ class Post extends ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['status', 'moderated_by', 'moderated_at'], 'integer']
+            [['status', 'moderated_by', 'moderated_at'], 'integer'],
         ];
     }
 
@@ -43,7 +44,7 @@ class Post extends ActiveRecord
     public function behaviors()
     {
         return [
-            ModerationBehavior::class
+            ModerationBehavior::class,
         ];
     }
 
