@@ -104,7 +104,7 @@ class Post extends ActiveRecord
           [
               'class' => ModerationBehavior::class,
               'statusAttribute' => 'status_id',
-              'moderatedByAttribute' => 'moderator_id',
+              'moderatedByAttribute' => 'moderator_id', // or set to `false` to disable this attribute.
           ],
       ];
     }
