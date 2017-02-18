@@ -114,7 +114,7 @@ class Post extends ActiveRecord
 Usage
 --------
 
-> In next examples I will use Post model to demonstrate how the behavior and trait works. You can moderate any ActiveRecord Model.
+> In next examples I will use Post model to demonstrate how the behavior and query class works. You can moderate any ActiveRecord Model.
 
 #### Moderate Models
 
@@ -185,54 +185,30 @@ class Post extends ActiveRecord
 
 #### Query Models
 
-`ModerationQueryTrait` adds the ability of getting only approved, rejected, postponed or pending models. Usage example:
+`ModerationQuery` adds the ability of getting only approved, rejected, postponed or pending models. Usage example:
 
 ```php
-use yii2mod\moderation\ModerationQueryTrait;
+use yii2mod\moderation\ModerationQuery;
 
 class Post extends ActiveRecord 
 {
-    use ModerationQueryTrait;
+    public static function find()
+    {
+        return new ModerationQuery(get_called_class());
+    }
 }
 ```
 
 Now you can use the following methods:
 
 ```php
-Post::approved()->all(); // It will return all Approved Posts
+Post::find()->approved()->all(); // It will return all Approved Posts
 
-Post::rejected()->all(); // It will return all Rejected Posts
+Post::find()->pending()->all(); // It will return all Pending Posts
 
-Post::postponed()->all(); // It will return all Postponed Posts
+Post::find()->rejected()->all(); // It will return all Rejected Posts
 
-Post::pending()->all(); // It will return all Pending Posts
-```
+Post::find()->postponed()->all(); // It will return all Postponed Posts
 
-> Also you may apply a condition, which filters only "approved" records, to the ActiveQuery as default scope:
-
-```php
-use yii2mod\moderation\ModerationQueryTrait;
-use yii2mod\moderation\ModerationBehavior;
-
-class Post extends ActiveRecord
-{
-    use ModerationQueryTrait;
-    
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            ModerationBehavior::class,
-        ];
-    }
-
-    public static function find()
-    {
-        return parent::find()->where(['status' => \yii2mod\moderation\enums\Status::APPROVED]);
-    }
-}
-
-$posts = Post::find()->all(); // returns only "approved" records
+Post::find()->approvedWithPending()->all() // It will return all Approved and Pending Posts
 ```

@@ -3,9 +3,8 @@
 namespace yii2mod\moderation\tests\data;
 
 use yii\db\ActiveRecord;
-use yii2mod\moderation\enums\Status;
 use yii2mod\moderation\ModerationBehavior;
-use yii2mod\moderation\ModerationQueryTrait;
+use yii2mod\moderation\ModerationQuery;
 
 /**
  * Class Post
@@ -17,8 +16,6 @@ use yii2mod\moderation\ModerationQueryTrait;
  */
 class Post extends ActiveRecord
 {
-    use ModerationQueryTrait;
-
     /**
      * @return string
      */
@@ -46,6 +43,14 @@ class Post extends ActiveRecord
         return [
             ModerationBehavior::class,
         ];
+    }
+
+    /**
+     * @return ModerationQuery
+     */
+    public static function find()
+    {
+        return new ModerationQuery(get_called_class());
     }
 
     public function beforeModeration()
