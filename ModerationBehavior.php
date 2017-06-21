@@ -99,7 +99,7 @@ class ModerationBehavior extends Behavior
     /**
      * @return array
      */
-    public function events()
+    public function events(): array
     {
         return [
             ActiveRecord::EVENT_BEFORE_INSERT => 'beforeInsert',
@@ -110,7 +110,7 @@ class ModerationBehavior extends Behavior
     /**
      * @param $event
      */
-    public function beforeInsert($event)
+    public function beforeInsert(ModelEvent $event): void
     {
         $this->fillModeratedByAttribute();
     }
@@ -118,7 +118,7 @@ class ModerationBehavior extends Behavior
     /**
      * @param $event
      */
-    public function beforeUpdate($event)
+    public function beforeUpdate(ModelEvent $event): void
     {
         $this->fillModeratedByAttribute();
     }
@@ -128,7 +128,7 @@ class ModerationBehavior extends Behavior
      *
      * @return bool
      */
-    public function beforeModeration()
+    public function beforeModeration(): bool
     {
         if (method_exists($this->owner, 'beforeModeration')) {
             if (!$this->owner->beforeModeration()) {
@@ -145,9 +145,9 @@ class ModerationBehavior extends Behavior
     /**
      * Change model status to Approved
      *
-     * @return bool|false|int
+     * @return bool
      */
-    public function markApproved()
+    public function markApproved(): bool
     {
         $this->owner->{$this->statusAttribute} = Status::APPROVED;
 
@@ -161,9 +161,9 @@ class ModerationBehavior extends Behavior
     /**
      * Change model status to Rejected
      *
-     * @return bool|false|int
+     * @return bool
      */
-    public function markRejected()
+    public function markRejected(): bool
     {
         $this->owner->{$this->statusAttribute} = Status::REJECTED;
 
@@ -177,9 +177,9 @@ class ModerationBehavior extends Behavior
     /**
      * Change model status to Postponed
      *
-     * @return bool|false|int
+     * @return bool
      */
-    public function markPostponed()
+    public function markPostponed(): bool
     {
         $this->owner->{$this->statusAttribute} = Status::POSTPONED;
 
@@ -193,9 +193,9 @@ class ModerationBehavior extends Behavior
     /**
      * Change model status to Pending
      *
-     * @return bool|false|int
+     * @return bool
      */
-    public function markPending()
+    public function markPending(): bool
     {
         $this->owner->{$this->statusAttribute} = Status::PENDING;
 
@@ -211,7 +211,7 @@ class ModerationBehavior extends Behavior
      *
      * @return bool
      */
-    public function isApproved()
+    public function isApproved(): bool
     {
         return $this->owner->{$this->statusAttribute} == Status::APPROVED;
     }
@@ -221,7 +221,7 @@ class ModerationBehavior extends Behavior
      *
      * @return bool
      */
-    public function isRejected()
+    public function isRejected(): bool
     {
         return $this->owner->{$this->statusAttribute} == Status::REJECTED;
     }
@@ -231,7 +231,7 @@ class ModerationBehavior extends Behavior
      *
      * @return bool
      */
-    public function isPostponed()
+    public function isPostponed(): bool
     {
         return $this->owner->{$this->statusAttribute} == Status::POSTPONED;
     }
@@ -241,7 +241,7 @@ class ModerationBehavior extends Behavior
      *
      * @return bool
      */
-    public function isPending()
+    public function isPending(): bool
     {
         return $this->owner->{$this->statusAttribute} == Status::PENDING;
     }
@@ -251,7 +251,7 @@ class ModerationBehavior extends Behavior
      *
      * return void
      */
-    protected function fillModeratedByAttribute()
+    protected function fillModeratedByAttribute(): void
     {
         if ($this->moderatedByAttribute !== false) {
             $this->owner->{$this->moderatedByAttribute} = $this->getModeratedByAttributeValue();
@@ -260,8 +260,10 @@ class ModerationBehavior extends Behavior
 
     /**
      * Get value for `moderatedByAttribute`
+     *
+     * @return int|null
      */
-    protected function getModeratedByAttributeValue()
+    protected function getModeratedByAttributeValue(): ?int
     {
         $user = Yii::$app->get('user', false);
 

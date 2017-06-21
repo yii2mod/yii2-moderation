@@ -37,7 +37,7 @@ class ModerationQuery extends ActiveQuery
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init(): void
     {
         parent::init();
 
@@ -49,7 +49,7 @@ class ModerationQuery extends ActiveQuery
      *
      * @return ActiveQuery
      */
-    public function approved()
+    public function approved(): ActiveQuery
     {
         return $this->andWhere([$this->statusAttribute => Status::APPROVED]);
     }
@@ -59,7 +59,7 @@ class ModerationQuery extends ActiveQuery
      *
      * @return ActiveQuery
      */
-    public function rejected()
+    public function rejected(): ActiveQuery
     {
         return $this->andWhere([$this->statusAttribute => Status::REJECTED]);
     }
@@ -69,7 +69,7 @@ class ModerationQuery extends ActiveQuery
      *
      * @return ActiveQuery
      */
-    public function postponed()
+    public function postponed(): ActiveQuery
     {
         return $this->andWhere([$this->statusAttribute => Status::POSTPONED]);
     }
@@ -79,7 +79,7 @@ class ModerationQuery extends ActiveQuery
      *
      * @return ActiveQuery
      */
-    public function pending()
+    public function pending(): ActiveQuery
     {
         return $this->andWhere([$this->statusAttribute => Status::PENDING]);
     }
@@ -89,7 +89,7 @@ class ModerationQuery extends ActiveQuery
      *
      * @return ActiveQuery
      */
-    public function approvedWithPending()
+    public function approvedWithPending(): ActiveQuery
     {
         return $this->andWhere([$this->statusAttribute => [Status::APPROVED, Status::PENDING]]);
     }
