@@ -1,5 +1,10 @@
-Yii2 Moderation 
-===============
+<p align="center">
+    <a href="https://github.com/yiisoft" target="_blank">
+        <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
+    </a>
+    <h1 align="center">Yii2 Moderation Extension</h1>
+    <br>
+</p>
 
 A simple Content Moderation System for Yii2 that allows you to Approve or Reject resources like posts, comments, etc.
 
@@ -22,7 +27,7 @@ php composer.phar require --prefer-dist yii2mod/yii2-moderation "*"
 
 or add
 
-```json
+```
 "yii2mod/yii2-moderation": "*"
 ```
 
@@ -42,9 +47,9 @@ Create a migration to add the new columns. Example Migration:
 use yii\db\Migration;
 
 /**
- * Handles adding meration columns to table `post`.
+ * Handles adding moderation columns to table `post`.
  */
-class m161117_092603_add_meration_columns_to_post_table extends Migration
+class m161117_092603_add_moderation_columns_to_post_table extends Migration
 {
     /**
      * @inheritdoc
